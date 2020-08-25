@@ -23,10 +23,10 @@ X_smote,Y_smote = SMOTE().fit_sample(X,Y)
 
 X_train, X_test, Y_train, Y_test = train_test_split(X_smote, Y_smote, stratify = Y_smote, test_size=0.2, random_state=52)
 
-print('Shape of X_train:', X_train.shape)
-print('Shape of X_test:', X_test.shape)
-print('Shape of Y_train:', Y_train.shape)
-print('Shape of Y_test:', Y_test.shape)
+# print('Shape of X_train:', X_train.shape)
+# print('Shape of X_test:', X_test.shape)
+# print('Shape of Y_train:', Y_train.shape)
+# print('Shape of Y_test:', Y_test.shape)
 
 # Gradient boost
 gb = GradientBoostingClassifier()
