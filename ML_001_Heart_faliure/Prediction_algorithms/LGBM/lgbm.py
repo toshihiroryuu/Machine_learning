@@ -7,7 +7,10 @@ import scikitplot as skplt
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
-from sklearn.ensemble import GradientBoostingClassifier
+# pip install lightgbm
+import lightgbm as lgb
+from lightgbm import LGBMClassifier
+
 from sklearn.metrics import classification_report 
 
 # Read csv file into dataframe
@@ -28,13 +31,13 @@ print('Shape of X_test:', X_test.shape)
 print('Shape of Y_train:', Y_train.shape)
 print('Shape of Y_test:', Y_test.shape)
 
-# Gradient boost
-gb = GradientBoostingClassifier()
-model = gb.fit(X_train, Y_train)
+# LGBM
+lgbm = LGBMClassifier()
+model = lgbm.fit(X_train, Y_train)
 Y_predict = model.predict(X_test)
 
 skplt.metrics.plot_confusion_matrix(Y_test, Y_predict, figsize=(8,8), 
-                                    title='Confusion Matrix: Gradient Boosting Classifier',
+                                    title='Confusion Matrix: LGBM',
                                     normalize=True,
                                     cmap='Blues')
 plt.show()
