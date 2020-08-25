@@ -30,6 +30,7 @@ print('Shape of X_test:', X_test.shape)
 print('Shape of Y_train:', Y_train.shape)
 print('Shape of Y_test:', Y_test.shape)
 
+# Decision tree
 dt = DecisionTreeClassifier()
 model = dt.fit(X_train, Y_train)
 Y_predict = model.predict(X_test)

@@ -7,8 +7,9 @@ import scikitplot as skplt
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
-from sklearn import svm
+from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report 
+from sklearn.ensemble import RandomForestClassifier
 
 # Read csv file into dataframe
 df = pd.read_csv('Dataset\heart_failure_clinical_records.csv')
@@ -28,13 +29,13 @@ print('Shape of X_test:', X_test.shape)
 print('Shape of Y_train:', Y_train.shape)
 print('Shape of Y_test:', Y_test.shape)
 
-# Support vector machine
-svm = svm.SVC(kernel='linear', C = 1)
-model = svm.fit(X_train, Y_train)
+# Random forest classifier
+rf = RandomForestClassifier(n_estimators=50)
+model = rf.fit(X_train, Y_train)
 Y_predict = model.predict(X_test)
 
 skplt.metrics.plot_confusion_matrix(Y_test, Y_predict, figsize=(8,8), 
-                                    title='Confusion Matrix: SVM',
+                                    title='Confusion Matrix: Random Forest',
                                     normalize=True,
                                     cmap='Blues')
 
