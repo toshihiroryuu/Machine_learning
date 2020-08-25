@@ -7,10 +7,8 @@ import scikitplot as skplt
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
-from sklearn.tree import DecisionTreeClassifier
+from sklearn import svm
 from sklearn.metrics import classification_report 
-
-
 
 # Read csv file into dataframe
 df = pd.read_csv('Dataset\heart_failure_clinical_records.csv')
@@ -30,16 +28,15 @@ print('Shape of X_test:', X_test.shape)
 print('Shape of Y_train:', Y_train.shape)
 print('Shape of Y_test:', Y_test.shape)
 
-dt = DecisionTreeClassifier()
-model = dt.fit(X_train, Y_train)
+svm = svm.SVC(kernel='linear', C = 1)
+model = svm.fit(X_train, Y_train)
 Y_predict = model.predict(X_test)
 
 skplt.metrics.plot_confusion_matrix(Y_test, Y_predict, figsize=(8,8), 
-                                    title='Confusion Matrix: Decision Tree',
+                                    title='Confusion Matrix: SVM',
                                     normalize=True,
                                     cmap='Blues')
 
 plt.show()
 
 print(classification_report(Y_test, Y_predict))
-
