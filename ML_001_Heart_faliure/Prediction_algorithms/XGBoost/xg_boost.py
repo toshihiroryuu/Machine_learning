@@ -28,6 +28,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X_smote, Y_smote, stratify =
 
 # print('Shape of X_train:', X_train.shape)
 # print('Shape of X_test:', X_test.shape)
+
 # print('Shape of Y_train:', Y_train.shape)
 # print('Shape of Y_test:', Y_test.shape)
 
