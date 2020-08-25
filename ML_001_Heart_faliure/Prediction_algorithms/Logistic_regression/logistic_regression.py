@@ -7,9 +7,9 @@ import scikitplot as skplt
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report 
-
+from sklearn.linear_model import LogisticRegression
 
 
 # Read csv file into dataframe
@@ -30,18 +30,16 @@ print('Shape of X_test:', X_test.shape)
 print('Shape of Y_train:', Y_train.shape)
 print('Shape of Y_test:', Y_test.shape)
 
-
-
-dt = DecisionTreeClassifier()
-model = dt.fit(X_train, Y_train)
+# Logistic Regression
+logis = LogisticRegression(random_state=0, solver='lbfgs')
+model = logis.fit(X_train, Y_train)
 Y_predict = model.predict(X_test)
 
 skplt.metrics.plot_confusion_matrix(Y_test, Y_predict, figsize=(8,8), 
-                                    title='Confusion Matrix: Decision Tree',
+                                    title='Confusion Matrix: Logistic Regression',
                                     normalize=True,
                                     cmap='Blues')
 
 plt.show()
 
 print(classification_report(Y_test, Y_predict))
-
