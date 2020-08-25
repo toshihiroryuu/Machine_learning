@@ -42,4 +42,9 @@ skplt.metrics.plot_confusion_matrix(Y_test, Y_predict, figsize=(8,8),
                                     cmap='Blues')
 plt.show()
 
+# Show importance features
+lgb.plot_importance(model)
+plt.title("Feature Importances")
+plt.show()
+
 print(classification_report(Y_test, Y_predict))
