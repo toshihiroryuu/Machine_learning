@@ -2,6 +2,7 @@ import pandas as pd
 
 import matplotlib.pyplot as plt
 # pip install scikit-plot
+# conda install -c conda-forge scikit-plot
 import scikitplot as skplt
 
 from sklearn.model_selection import train_test_split
